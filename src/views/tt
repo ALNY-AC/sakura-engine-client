@@ -1,0 +1,104 @@
+<script>
+
+// import Node from './Node'
+
+// export default {
+//   data() {
+//     return {
+//       msg: '',
+//       ws: null,
+//     }
+//   },
+//   mounted() {
+
+//     this.ws = new WebSocket("ws://localhost:8080");
+
+//     this.ws.onopen = function () {
+//       // Web Socket 已连接上，使用 send() 方法发送数据
+//     };
+
+//     this.ws.onmessage = function (evt) {
+//       var msg = evt.data;
+//       console.warn("数据已接收...");
+//       console.warn(msg);
+
+//     };
+
+//     this.ws.onclose = function () {
+//       // 关闭 websocket
+//       console.warn("连接已关闭...");
+//     };
+//   },
+//   methods: {
+//     open() {
+//       let node = new Node();
+//       console.warn(node.get());
+//       this.ws.send(this.msg);
+
+//     }
+//   }
+
+// }
+</script>
+
+
+ this.ctx.fillStyle = "rgb(38,38,38)";
+      this.ctx.strokeStyle = "rgb(38,38,38)";
+      this.ctx.clearRect(0, 0, 900, 900);
+      this.ctx.fillRect(0, 0, 900, 900);
+      this.ctx.beginPath();
+
+      let fillStyle = this.ctx.fillStyle;
+      let strokeStyle = this.ctx.strokeStyle;
+      let center = {
+        x: (900 / 2),
+        y: (900 / 2),
+      };
+
+      // // 横线
+      // this.ctx.strokeStyle = "#ffffff";
+      // this.ctx.beginPath();
+      // this.ctx.moveTo(center.x, 0);
+      // this.ctx.lineTo(center.x, 900);
+      // this.ctx.lineWidth = 1;
+      // this.ctx.stroke();
+
+
+      // // 竖线
+      // this.ctx.strokeStyle = "#ffffff";
+      // this.ctx.beginPath();
+      // this.ctx.moveTo(0, center.y);
+      // this.ctx.lineTo(900, center.y);
+      // this.ctx.lineWidth = 1;
+      // this.ctx.stroke();
+
+      // // 刻度线竖线
+      // for (let i = 0; i < 900 / 10; i++) {
+      //   this.ctx.strokeStyle = "#ffffff";
+      //   this.ctx.moveTo(center.x, 10 * i);
+      //   this.ctx.lineTo(center.x + 5, 10 * i);
+      //   this.ctx.lineWidth = 0.1;
+      //   this.ctx.stroke();
+      // }
+
+
+      // // 刻度线横线
+      // for (let i = 0; i < 900 / 10; i++) {
+      //   this.ctx.strokeStyle = "#ffffff";
+      //   this.ctx.moveTo(10 * i, center.y,);
+      //   this.ctx.lineTo(10 * i, center.y - 5);
+      //   this.ctx.lineWidth = 0.1;
+      //   this.ctx.stroke();
+      // }
+
+
+
+      this.nodes.forEach(node => {
+        this.ctx.fillStyle = node.color;
+        this.ctx.fillRect((node.x + center.x) + -this.c_x, (node.y + center.y) + -this.c_y, node.w, node.h);
+        node.render(this.ctx);
+      });
+      this.ctx.fillStyle = fillStyle;
+      this.ctx.strokeStyle = strokeStyle;
+
+      
