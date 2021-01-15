@@ -1,0 +1,47 @@
+[
+    {
+        "type": "Node",
+        "name": "root",
+        "components": [
+            {
+                "type": "Sprite"
+            }
+        ]
+    },
+    {
+        "type": "Node",
+        "name": "root",
+        "components": [
+            {
+                "type": "Sprite"
+            }
+        ]
+    },
+    {
+        "type": "Node",
+        "name": "root",
+        "components": [
+            {
+                "type": "Sprite"
+            }
+        ]
+    },
+    {
+        "type": "Node",
+        "name": "root",
+        "components": [
+            {
+                "type": "Sprite"
+            }
+        ]
+    },
+    {
+        "type": "Node",
+        "name": "root",
+        "components": [
+            {
+                "type": "Sprite"
+            }
+        ]
+    }
+]
