@@ -9,29 +9,23 @@ import { Component, Vue } from "vue-property-decorator";
 import Event from "../model/core/Event";
 import App from "../model/core/App";
 import Node from "@/model/core/Node";
-import Player from "../model/script/Player";
-import Sprite from "../model/script/Sprite";
-import build from "../model/build";
+import Scene from "@/model/core/Scene";
+import main from "../model/main";
 
 
 @Component
 export default class game extends Vue {
   id: string = 'canvas_' + parseInt((Math.random() * 1000).toFixed(0));
-  w: number = 400
-  h: number = 400
+  w: number = 500
+  h: number = 500
 
   mounted() {
     let app = new App();
     app.setSize(this.w, this.h);
-
-    let nodes: Node[] = build();
-    // let node = new Node();
-    // node.addComponent(Sprite);
-    // app.nodes.push(node);
-    app.nodes = nodes;
-    console.warn(nodes);
-
-    app.run(this.id);
+    app.setId(this.id);
+    app.loadAssets();
+    app.run();
+    main(app);
   }
 
 }

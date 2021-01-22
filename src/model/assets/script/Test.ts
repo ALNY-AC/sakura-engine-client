@@ -1,6 +1,6 @@
-import Component from '../core/Component'
+import Component from '../../core/Component'
 
-export default class Sprite extends Component {
+export default class Test extends Component {
     start() {
         this.node.size.w = 30;
         this.node.size.h = 30;

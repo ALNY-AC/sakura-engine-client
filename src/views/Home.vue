@@ -95,7 +95,7 @@ export default class Home extends Vue {
       mouse: {},
       zd: [],
     }
-    // this.open();
+    this.open();
     this.initScene();
     this.initEvent();
     this.initQrcode();
@@ -190,8 +190,8 @@ export default class Home extends Vue {
         this.socketDown = null;
       }
 
-      let socket = io('ws://192.168.0.6:22211', { transports: ['websocket'], });
-      let socketDown = io('ws://192.168.0.6:22200', { transports: ['websocket'], });
+      let socket = io('ws://192.168.10.5:22211', { transports: ['websocket'], });
+      let socketDown = io('ws://192.168.10.5:22200', { transports: ['websocket'], });
 
       // let socket = io('ws://47.103.96.190:22211', { transports: ['websocket'] });
       // let socketDown = io('ws://47.103.96.190:22200', { transports: ['websocket'] });

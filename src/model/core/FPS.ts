@@ -24,12 +24,12 @@ export default class FPS {
      * FPS累计用间距时间
      * in ns
      */
-    private interval = 0;
-    private time = 0;
+    interval = 0;
+    time = 0;
     /**
      * 运行桢累计 
      */
-    private frameCount = 0;
+    frameCount = 0;
 
     /**
      * 制造FPS数据

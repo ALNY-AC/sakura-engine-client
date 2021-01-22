@@ -7,4 +7,7 @@ export default class Component {
     }
     update(dt: number) { }
     render(ctx: CanvasRenderingContext2D) { }
+    getComponent(name: string | Component | any): Component {
+        return this.node.getComponent(name)
+    }
 }

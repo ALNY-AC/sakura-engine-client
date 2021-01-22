@@ -3,10 +3,12 @@ export default class Event {
     static keyList: any = {};
     static keyCount: any = {};
     static keyChars: any = {};
-    static mouse = { x: 0, y: 0, down: false, downCount: 0 };
+    static mouse = { x: 0, y: 0, down: false, downCount: 0, move: false, };
+    static oldMouse = { x: 0, y: 0, down: false, downCount: 0, move: false, };
     static key: string;
     static keyCode: number;
     static keydown: Boolean;
+    static $el: HTMLCanvasElement;
     static init(elId: string) {
         let $el = <HTMLCanvasElement>document.getElementById(elId);
         for (let i = 0; i < 256; i++) {
@@ -19,31 +21,53 @@ export default class Event {
             Event.keyCode = e.keyCode;
             Event.keyChars[e.key] = true;
             // e.preventDefault();
+
+            Event.events.filter(el => el.name == 'keydown').forEach((el) => el.callback(e));
         });
         window.addEventListener('keyup', (e) => {
             Event.keyList[e.keyCode] = false;
             Event.keyChars[e.key] = false;
             // e.preventDefault();
+            Event.events.filter(el => el.name == 'keyup').forEach((el) => el.callback(e));
         });
         $el.addEventListener('mousemove', (e) => {
             Event.mouse.x = e.offsetX;
             Event.mouse.y = e.offsetY;
+            this.mouse.move = true;
+
+            Event.events.filter(el => el.name == 'mousemove').forEach((el) => el.callback(e));
             e.preventDefault();
         });
         $el.addEventListener('mousewheel', (e) => {
+            Event.events.filter(el => el.name == 'mousewheel').forEach((el) => el.callback(e));
             e.preventDefault();
         });
         $el.addEventListener('mousedown', (e: MouseEvent) => {
             Event.mouse.down = true;
+            Event.events.filter(el => el.name == 'mousedown').forEach((el) => el.callback(e));
             e.preventDefault();
         });
 
         $el.addEventListener('mouseup', (e: MouseEvent) => {
             Event.mouse.down = false;
+            Event.events.filter(el => el.name == 'mouseup').forEach((el) => el.callback(e));
             e.preventDefault();
         });
+        Event.$el = $el;
     }
+
+    static events: any[] = [];
+    static on(name: string, callback: Function) {
+        Event.events.push({ name: name, callback: callback });
+    }
+
+    static off(name: string, callback: Function) {
+    }
+
     static loop() {
+        // 
+
+
         let keyList = Object.keys(this.keyList);
         keyList.map(el => Event.keyList[el]);
         keyList.forEach(key => {
