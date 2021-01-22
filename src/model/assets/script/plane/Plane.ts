@@ -14,7 +14,7 @@ export default class Plane extends Component {
     }
 
     fire() {
-        let bulletNode = sk.node('bullet', ['Bullet']);
+        let bulletNode = sk.node('bullet', ['Bullet', 'Collider']);
         bulletNode.x = this.node.x;
         bulletNode.y = this.node.y;
         this.node.app.root.addNode(bulletNode);

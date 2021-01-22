@@ -8,7 +8,7 @@ import Plane from './Plane';
 export default class Bullet extends Component {
 
 
-    speed = 200;//500像素/s
+    speed = 500;///s
     timeCount = 0;
     label: Label;
     frame: number = 0;

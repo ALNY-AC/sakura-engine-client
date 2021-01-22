@@ -10,7 +10,7 @@ export default class PlaneMain extends Component {
     timeCount = 0;
 
     start() {
-        let playerNode = sk.node('playerNode', ['Plane', 'Control', 'Player']);
+        let playerNode = sk.node('playerNode', ['Plane', 'Control', 'Player', 'Collider']);
         playerNode.x = 500 / 2;
         playerNode.y = 500 * 0.8;
         this.node.addNode(playerNode);
@@ -28,6 +28,13 @@ export default class PlaneMain extends Component {
             this.node.addNode(npcNode);
         }
 
+    }
+
+    render(ctx: CanvasRenderingContext2D) {
+        // ctx.strokeStyle = new sk.Color(255, 255, 255).rgb;
+        // ctx.strokeRect(500 / 2, 0, 0.1, 500);
+        // ctx.strokeRect(0, 500 / 2, 500, 0.1);
+        // ctx.beginPath();
     }
 
 }

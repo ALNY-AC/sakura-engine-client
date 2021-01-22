@@ -1,3 +1,4 @@
+import CollisionManager from "../assets/script/CollisionManager";
 import App from "./App";
 import Event from "./Event";
 import FPS from "./FPS";
@@ -35,6 +36,8 @@ export class Timer {
 
                 this.oldtime = nowtime;
                 this.fps.makeFPS();
+
+                CollisionManager.update();
 
                 if (this.isLogic) {
                     this.update(this.dt, this.nodes);
