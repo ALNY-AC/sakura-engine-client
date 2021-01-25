@@ -13,7 +13,7 @@ export default class Player extends Component {
         let plane = <Plane>this.node.getComponent('Plane');
         control.on('32', () => {
             let c = Event.getCount(32);
-            if (c == 1 || c % 10 == 0) {
+            if (c == 1 || c % 1 == 0) {
                 plane.fire();
             }
         })

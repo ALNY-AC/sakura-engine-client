@@ -1,6 +1,7 @@
 import Component from "./Component";
 import Node from "./Node";
 import Color from "./Color";
+import Vector from "./Vector";
 
 let script: any = {};
 
@@ -29,7 +30,8 @@ const sk = {
     skclass,
     prop,
     Node,
-    Color
+    Color,
+    Vector
 }
 
 

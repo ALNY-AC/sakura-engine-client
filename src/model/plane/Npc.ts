@@ -1,14 +1,15 @@
 import Component from '@/model/core/Component';
 import Event from '@/model/core/Event';
 import sk from '@/model/core/sk';
-import Label from '../Lable';
-import Plane from './Plane';
+import Label from '../assets/script/Lable';
+import Control from './Control';
+import Plane from './plane';
 
 @sk.skclass
-export default class Bullet extends Component {
+export default class Npc extends Component {
 
 
-    speed = 500;///s
+    speed = 100;//500像素/s
     timeCount = 0;
     label: Label;
     frame: number = 0;
@@ -21,29 +22,27 @@ export default class Bullet extends Component {
     dx: number = 0;
     dy: number = 0;
 
-    plane: Plane = null;
-
     start() {
-        this.node.w = 5;
-        this.node.h = 5;
-        this.node.color = new sk.Color(255, 255, 255);
-        this.node.addComponent('Sprite');
-        this.label = <Label>this.node.addComponent('Label');
 
-        let deviationX = Math.round(Math.random() * 20);
-        let deviationY = Math.round(Math.random() * 20);
+        this.node.w = 15;
+        this.node.h = 15;
 
-        if (Math.round(Math.random() * 1) == 0) {
-            deviationX = -deviationX;
-        } else {
-            deviationY = -deviationY;
-        }
-        this.targetPosition.x = Event.mouse.x + deviationX;
-        this.targetPosition.y = Event.mouse.y + deviationY;
+        let control = <Control>this.node.getComponent('Control');
+        let plane = <Plane>this.node.getComponent('Plane');
+
+        let x = Math.round(Math.random() * 500);
+        let y = 0;
+
+        this.node.x = x;
+        this.node.y = y;
+
+        this.targetPosition.x = Math.round(Math.random() * 500);
+        this.targetPosition.y = 500;
 
     }
 
     update(dt: number) {
+
 
 
         let frameDistance = dt * this.speed;
@@ -58,11 +57,12 @@ export default class Bullet extends Component {
         // this.label.text = `time:${this.timeCount},x:${this.node.x},y:${this.node.y}`;
         this.timeCount += parseInt((dt * 1000).toFixed(0));
 
-        if (this.timeCount >= 2000) {
+        if (this.node.y > 500) {
             this.node.destroy();
         }
 
+        // if (this.timeCount >= 2000) {
+        // }
+
     }
-
-
 }

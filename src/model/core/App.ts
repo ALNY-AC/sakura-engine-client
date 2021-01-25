@@ -1,3 +1,4 @@
+import CollisionManager from "../assets/script/CollisionManager";
 import Event from "./Event";
 import FPS from "./FPS";
 import Node from "./Node";
@@ -6,6 +7,13 @@ import { Timer } from "./Timer";
 
 export default class App {
 
+    constructor() {
+        this.init();
+    }
+    init() {
+        CollisionManager.colliders = [];
+        CollisionManager.collidersing = [];
+    }
     w: number = 0
     h: number = 0
     ctx: CanvasRenderingContext2D;
