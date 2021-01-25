@@ -11,9 +11,14 @@ import Player from './Player';
 export default class Body extends Component {
 
 
+    speed = 100;///s
 
     frontNodeBody: Body = null;
     oldVector: Vector = new Vector(0, 0);
+
+    distance: number = null;
+    dx: number = 0;
+    dy: number = 0;
 
     start() {
         this.node.w = 10;
@@ -23,11 +28,17 @@ export default class Body extends Component {
     }
 
     update(dt: number) {
-        if (this.frontNodeBody) {
-            this.oldVector = new Vector(this.node.x, this.node.y);
-            this.node.x = this.frontNodeBody.oldVector.x;
-            this.node.y = this.frontNodeBody.oldVector.y;
-        }
+        // this.oldVector = new Vector(this.node.x, this.node.y);
+
+        // if (this.frontNodeBody) {
+        //     let frameDistance = dt * this.speed;
+        //     this.dx = this.frontNodeBody.node.x - this.node.x;
+        //     this.dy = this.frontNodeBody.node.y - this.node.y;
+        //     this.distance = Math.sqrt(this.dx * this.dx + this.dy * this.dy);
+        //     let f = frameDistance / this.distance;
+        //     this.node.x += f * this.dx;
+        //     this.node.y += f * this.dy;
+        // }
     }
 
 

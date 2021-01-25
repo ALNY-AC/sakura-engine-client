@@ -17,6 +17,7 @@ export default class Player extends Component implements ICollider {
 
     newVector: Vector = new Vector(0, 0);
     bodys: Body[] = [];
+    pointsArray: Vector[] = [];
 
     start() {
         this.bodys.push(<Body>this.getComponent('Body'));
@@ -25,8 +26,7 @@ export default class Player extends Component implements ICollider {
     update(dt: number) {
 
         let body = <Body>this.getComponent("Body");
-        body.oldVector = new Vector(this.node.x, this.node.y);
-
+        // body.oldVector = new Vector(this.node.x, this.node.y);
 
         if (Event.input(87)) {
             // 上
@@ -44,6 +44,8 @@ export default class Player extends Component implements ICollider {
             //右
             this.newVector = new Vector(this.speed, 0);
         }
+
+
 
         // let frameDistance = dt * this.speed;
         // let f = frameDistance / this.distance;
@@ -66,6 +68,21 @@ export default class Player extends Component implements ICollider {
             this.node.y = 500;
         }
 
+        // this.pointsArray.push(new Vector(this.node.x, this.node.y));
+
+
+        // this.bodys.forEach((body, i) => {
+        //     if (i + 1 >= this.bodys.length - 1) {
+        //         return;
+        //     }
+        //     body.node.x = this.bodys[i + 1].node.x;
+
+        //     // body.node.y = this.bodys[i + 1].node.y;
+        //     // return body;
+        // });
+
+
+
     }
 
     onCollisionEnter(other: Collider, self: Collider): void {
@@ -73,10 +90,10 @@ export default class Player extends Component implements ICollider {
         if (other.node.name == 'food') {
             let bodyNode = sk.node('body', ["Body", "Collider"]);
             let body = <Body>bodyNode.getComponent("Body");
-            body.frontNodeBody = this.bodys[this.bodys.length - 1]
+            body.frontNodeBody = this.bodys[this.bodys.length - 1];
             this.node.app.root.addNode(bodyNode);
             this.bodys.push(body);
-            console.warn(this.bodys.length);
+
         }
 
 
