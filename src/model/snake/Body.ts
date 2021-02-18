@@ -3,8 +3,8 @@ import Event from '@/model/core/Event';
 import Node from '@/model/core/Node';
 import sk from '@/model/core/sk';
 import Vector from '@/model/core/Vector';
-import Collider from '../Collider';
-import ICollider from '../ICollider';
+import Collider from '../assets/script/Collider';
+import ICollider from '../assets/script/ICollider';
 import Player from './Player';
 
 @sk.skclass

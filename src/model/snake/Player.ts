@@ -2,8 +2,8 @@ import Component from '@/model/core/Component';
 import Event from '@/model/core/Event';
 import sk from '@/model/core/sk';
 import Vector from '@/model/core/Vector';
-import Collider from '../Collider';
-import ICollider from '../ICollider';
+import Collider from '../assets/script/Collider';
+import ICollider from '../assets/script/ICollider';
 import Body from './Body';
 
 @sk.skclass

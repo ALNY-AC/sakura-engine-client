@@ -1,7 +1,7 @@
 import Component from '@/model/core/Component';
 import Event from '@/model/core/Event';
 import sk from '@/model/core/sk';
-import Label from '../assets/script/Lable';
+import Label from '../Lable';
 import Control from './Control';
 import Plane from './plane';
 

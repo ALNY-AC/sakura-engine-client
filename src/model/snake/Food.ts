@@ -1,7 +1,7 @@
 import Component from '@/model/core/Component';
 import Event from '@/model/core/Event';
 import sk from '@/model/core/sk';
-import Collider from '../Collider';
+import Collider from '../assets/script/Collider';
 
 @sk.skclass
 export default class Food extends Component {

@@ -1,8 +1,8 @@
 import Component from '@/model/core/Component';
 import Event from '@/model/core/Event';
 import sk from '@/model/core/sk';
-import Collider from '../assets/script/Collider';
-import Label from '../assets/script/Lable';
+import Collider from '../Collider';
+import Label from '../Lable';
 import Plane from './Plane';
 
 @sk.skclass
@@ -45,12 +45,12 @@ export default class Bullet extends Component {
     }
 
     update(dt: number) {
-        let frameDistance = dt * this.speed;
         if (this.distance === null) {
             this.dx = this.targetPosition.x - this.node.x;
             this.dy = this.targetPosition.y - this.node.y;
             this.distance = Math.sqrt(this.dx * this.dx + this.dy * this.dy);
         }
+        let frameDistance = dt * this.speed;
         let f = frameDistance / this.distance;
         this.node.x += f * this.dx;
         this.node.y += f * this.dy;
